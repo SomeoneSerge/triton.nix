@@ -2,7 +2,6 @@
   pkgs ? import <nixpkgs> { },
   lib,
   onnxruntime,
-  substituteAll,
   cudatoolkit,
   cudnn,
   gcc6Stdenv,
@@ -54,8 +53,11 @@ let
         --update \
         --build
     '';
+    outputs = ["out" "test"];
     installPhase = ''
       mkdir -p $out/include $out/lib $out/bin
+      mkdir -p $test/lib
+
       cp -t $out/include \
         ./include/onnxruntime/core/session/onnxruntime_c_api.h \
         ./include/onnxruntime/core/session/onnxruntime_session_options_config_keys.h \
@@ -66,8 +68,13 @@ let
       cp -t $out/bin \
         ./build/Release/onnxruntime_perf_test \
         ./build/Release/onnx_test_runner
+
       chmod a+x $out/bin/*
       patchelf --set-rpath $out/lib $out/bin/*
+
+      cp -t $test/lib ./build/Release/libcustom_op_library.so
+      cp -t $test ./build/Release/testdata/custom_op_library/custom_op_test.onnx
+      ln -sf ./lib/libcustom_op_library.so $test/
     '';
   };
 in ort

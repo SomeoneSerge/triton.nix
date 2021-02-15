@@ -30,10 +30,13 @@
     pkgs = import nixpkgs { inherit system; };
     pkgsUnfree = import nixpkgs { inherit system; config.allowUnfree = true; };
     onnxruntime = with pkgsUnfree; callPackage ./onnxruntime/default.nix { inherit (inputs) onnxruntime; };
-    onnxruntime-backend = with pkgsUnfree; callPackage ./onnxruntime_backend/default.nix { inherit (inputs) onnxruntime-backend repo-core repo-common repo-backend; };
+    onnxruntime-backend = with pkgsUnfree; callPackage ./onnxruntime_backend/default.nix {
+      inherit (inputs) onnxruntime-backend repo-core repo-common repo-backend;
+      microsoft-onnxruntime = onnxruntime;
+    };
   in rec {
     packages.onnxruntime = onnxruntime;
     packages.onnxruntime-backend = onnxruntime-backend;
-    defaultPackage = packages.onnxruntime;
+    defaultPackage = packages.onnxruntime-backend;
   });
 }

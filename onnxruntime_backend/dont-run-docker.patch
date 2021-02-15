@@ -1,0 +1,21 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 78cec86..686bddd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -255,13 +255,9 @@ if(NOT ("${TRITON_BUILD_ONNXRUNTIME_VERSION}" STREQUAL ""))
+   add_custom_command(
+     OUTPUT
+       onnxruntime/lib/${ONNXRUNTIME_LIBRARY}
+-    COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tools/gen_ort_dockerfile.py --triton-container="nvcr.io/nvidia/tritonserver:${TRITON_BUILD_CONTAINER_VERSION}-py3-min" --ort-version="${TRITON_BUILD_ONNXRUNTIME_VERSION}" ${_GEN_FLAGS} --output=Dockerfile.ort
+-    COMMAND docker build --cache-from=tritonserver_onnxruntime --cache-from=tritonserver_onnxruntime_cache0 --cache-from=tritonserver_onnxruntime_cache1 -t ${TRITON_ONNXRUNTIME_DOCKER_IMAGE} -f ./Dockerfile.ort ${CMAKE_CURRENT_SOURCE_DIR}
+-    COMMAND docker rm onnxruntime_backend_ort || echo "error ignored..." || true
+-    COMMAND docker create --name onnxruntime_backend_ort ${TRITON_ONNXRUNTIME_DOCKER_IMAGE}
+-    COMMAND rm -fr onnxruntime
+-    COMMAND docker cp onnxruntime_backend_ort:/opt/onnxruntime onnxruntime
+-    COMMAND docker rm onnxruntime_backend_ort
++    COMMAND mkdir -p ./onnxruntime/test ./onnxruntime/lib
++    COMMAND cp -rf @onnxRuntime@/ ./onnxruntime/
++    COMMAND cp -rf @onnxRuntimeTest@/ ./onnxruntime/test/
+     COMMENT "Building ONNX Runtime"
+   )
+   add_custom_target(ort_target DEPENDS onnxruntime/lib/${ONNXRUNTIME_LIBRARY})
