@@ -1,0 +1,128 @@
+{
+  "nodes": {
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1610051610,
+        "narHash": "sha256-U9rPz/usA1/Aohhk7Cmc2gBrEEKRzcW4nwPWMPwja4Y=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "3982c9903e93927c2164caa727cd3f6a0e6d14cc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1613307323,
+        "narHash": "sha256-JMxGZ2iwyGl/pRFB5eF3X/B99FHxE3w2ZeDFs3XiLWQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "f4a9e6c28a1003112e41f62271e60b79688232d1",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "onnxruntime": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1613261371,
+        "narHash": "sha256-LIIeVrEDU9uLWqYFje+HobLBo3fCeabbqvh9742TQZE=",
+        "ref": "master",
+        "rev": "f649f917fe248a388d075f47903929d3dc4547ae",
+        "revCount": 4225,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/microsoft/onnxruntime.git"
+      },
+      "original": {
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/microsoft/onnxruntime.git"
+      }
+    },
+    "onnxruntime-backend": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1612405682,
+        "narHash": "sha256-Cqy5b6RE0VNqGJtnTaC6HsGSP6/JXnsuqGo9Gex0u+U=",
+        "owner": "triton-inference-server",
+        "repo": "onnxruntime_backend",
+        "rev": "61c6b7479e22bce47c2295ded1dc4bfa28598c49",
+        "type": "github"
+      },
+      "original": {
+        "owner": "triton-inference-server",
+        "repo": "onnxruntime_backend",
+        "type": "github"
+      }
+    },
+    "repo-backend": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1612904524,
+        "narHash": "sha256-pEZlZpbC6zDKLJ1b90e6H0w9v42gc99gZN4YzijAYy0=",
+        "owner": "triton-inference-server",
+        "repo": "backend",
+        "rev": "b30a5f89237fa7eabbe7698fe0bb5b0bb6c07248",
+        "type": "github"
+      },
+      "original": {
+        "owner": "triton-inference-server",
+        "repo": "backend",
+        "type": "github"
+      }
+    },
+    "repo-common": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1605725972,
+        "narHash": "sha256-08sIYEDlgRm2wDKMW8YfjngRs6NSKEFtzQm9vW1lHQQ=",
+        "owner": "triton-inference-server",
+        "repo": "common",
+        "rev": "ab26bb111fa609f1bd238dd4b87c2baa852a4469",
+        "type": "github"
+      },
+      "original": {
+        "owner": "triton-inference-server",
+        "repo": "common",
+        "type": "github"
+      }
+    },
+    "repo-core": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1612808454,
+        "narHash": "sha256-zPGkTBvllEw+fMOh1CcCL0L9hGTtiQacYyBoRV1no2U=",
+        "owner": "triton-inference-server",
+        "repo": "core",
+        "rev": "536b05ed1cf778ec75478e2833683b21951d93f7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "triton-inference-server",
+        "repo": "core",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs",
+        "onnxruntime": "onnxruntime",
+        "onnxruntime-backend": "onnxruntime-backend",
+        "repo-backend": "repo-backend",
+        "repo-common": "repo-common",
+        "repo-core": "repo-core"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
